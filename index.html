@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Selvam S - MCA Graduate, Full Stack Developer Portfolio">
+  <title>Selvam S | Portfolio</title>
+  <link rel="shortcut icon" href="./images/favicon-portfolio.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary-color: #6366f1;
+    --secondary-color: #8b5cf6;
+    --accent-color: #ec4899;
+    --dark-bg: #0f172a;
+    --light-bg: #f8fafc;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.2);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  /* Navbar */
+  #navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 16px 0;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  #navbar.scrolled {
+    padding: 12px 0;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--shadow-md);
+  }
+
+  #nav-logo {
+    font-size: 26px;
+    font-weight: 700;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .nav-custom-link {
+    font-weight: 500;
+    color: var(--text-dark) !important;
+    text-transform: uppercase;
+    margin: 0 4px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    position: relative;
+  }
+
+  .nav-custom-link::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
+    height: 2px;
+    background: var(--gradient-1);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-custom-link:hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  .nav-custom-link:hover {
+    color: var(--primary-color) !important;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.3) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-30px); }
+  }
+
+  .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-image-wrapper {
+    position: relative;
+    animation: floatImage 6s ease-in-out infinite;
+  }
+
+  @keyframes floatImage {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .hero-image {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    border: 6px solid rgba(255, 255, 255, 0.4);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-image::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  }
+
+  .hero-text {
+    max-width: 600px;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .hero-text .highlight {
+    background: linear-gradient(135deg, #ffee00, #ffff2c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(22px, 4vw, 34px);
+    color: rgba(255, 255, 255, 0.95);
+    margin: 20px 0;
+    min-height: 50px;
+    font-weight: 500;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: #fbbf24;
+    margin-left: 4px;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .hero-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    margin: 24px 0;
+    line-height: 1.8;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .social-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 24px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%);
+  }
+
+  .social-btn:hover::before {
+    width: 100%;
+    height: 100%;
+  }
+
+  .social-btn:hover {
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    border-color: #fff;
+  }
+
+  .social-btn i {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+  }
+
+  .social-btn:hover i {
+    transform: scale(1.2) rotate(360deg);
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: var(--dark-bg);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(251, 191, 36, 0.4);
+    margin-top: 16px;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(251, 191, 36, 0.5);
+    color: var(--dark-bg);
+  }
+
+  /* Section Styles */
+  .section {
+    padding: 100px 20px;
+  }
+
+  .section-light {
+    background: var(--light-bg);
+  }
+
+  .section-title {
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-1);
+    border-radius: 2px;
+  }
+
+  /* About Section */
+  .about-content {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 19px;
+    line-height: 1.9;
+    color: var(--text-light);
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  /* Skills Section */
+  .skills-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+  }
+
+  .toggle-btn {
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+  }
+
+  .toggle-btn.btn-primary {
+    background: var(--gradient-1);
+    border-color: transparent;
+  }
+
+  .toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .skills-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .skill-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: none;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .skill-card h4 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+  }
+
+  .tech-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+  }
+
+  .skill-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .skill-icon-item:hover {
+    transform: translateY(-8px);
+  }
+
+  .skill-icon-item i {
+    font-size: 56px;
+    transition: all 0.3s ease;
+  }
+
+  .skill-icon-item:hover i {
+    transform: scale(1.2) rotate(5deg);
+  }
+
+  .skill-icon-item span {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-dark);
+  }
+
+  .soft-skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .soft-skill-tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .soft-skill-tag:hover {
+    transform: translateY(-4px);
+    background: var(--gradient-3);
+    color: white;
+    border-color: white;
+    box-shadow: var(--shadow-md);
+  }
+
+  .soft-skill-tag i {
+    font-size: 20px;
+  }
+
+  /* Projects Section */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .project-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+  }
+
+  .project-card h5 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+  }
+
+  .project-tag {
+    display: inline-block;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .download-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: var(--gradient-1);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    align-self: flex-start;
+  }
+
+  .download-link:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+    color: white;
+  }
+
+  /* Publications & Internship */
+  .info-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .info-card h5 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+  }
+
+  .info-card p {
+    line-height: 1.8;
+    color: var(--text-light);
+  }
+
+  .info-card strong {
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+
+  /* Certifications */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .cert-item {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cert-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .cert-item h5 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cert-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--gradient-1);
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+
+  .cert-download:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+    color: white;
+  }
+
+  /* Contact Section */
+  .contact-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 100px 20px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveGrid 20s linear infinite;
+  }
+
+  @keyframes moveGrid {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+  }
+
+  .contact-section h2 {
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 700;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-form .form-control {
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .contact-form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .contact-form .form-control:focus {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 48px;
+    font-size: 18px;
+    font-weight: 600;
+    background: white;
+    color: var(--primary-color);
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.3);
+  }
+
+  /* Footer */
+  footer {
+    background: var(--dark-bg);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  footer a {
+    color: white;
+    margin: 0 16px;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    color: var(--primary-color);
+    transform: translateY(-4px);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-content {
+      text-align: center;
+      gap: 40px;
+    }
+
+    .hero-image {
+      width: 280px;
+      height: 280px;
+    }
+
+    .social-links {
+      justify-content: center;
+    }
+
+    .tech-skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 20px;
+    }
+
+    .projects-grid,
+    .cert-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section {
+      padding: 60px 20px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .hero-image {
+      width: 220px;
+      height: 220px;
+    }
+
+    .skill-card,
+    .info-card {
+      padding: 24px;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a id="nav-logo" class="navbar-brand" href="#" aria-label="Portfolio Home">
+        <i class="fas fa-code"></i> SELVAM
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-custom-link nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-custom-link nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-custom-link nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-custom-link nav-link" href="#publications">Publications</a></li>
+          <li class="nav-item"><a class="nav-custom-link nav-link" href="#internship">Experience</a></li>
+          <li class="nav-item"><a class="nav-custom-link nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-custom-link nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-image-wrapper">
+        <div class="hero-image" style="background-image: url('Gemini_Generated_Image_6x1kxn6x1kxn6x1k.png');" role="img" aria-label="Selvam S profile picture"></div>
+      </div>
+      
+      <div class="hero-text">
+        <h1>Hello, I'm <span class="highlight">Selvam S</span></h1>
+        <div class="hero-subtitle" id="typing-text" aria-live="polite">
+          MCA Graduate | Full Stack Developer<span class="typing-cursor"></span>
+        </div>
+        <p class="hero-description">
+          Passionate about creating innovative web solutions and building seamless digital experiences through code.
+        </p>
+        
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/selvam-ss1821" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn" aria-label="Visit LinkedIn profile">
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:selvamsssankar@gmail.com" class="social-btn" title="Email" aria-label="Send email">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+          </a>
+          <a href="tel:+916382498900" class="social-btn" title="Phone" aria-label="Call phone number">
+            <i class="fas fa-phone" aria-hidden="true"></i>
+          </a>
+          <a href="https://github.com/Selvam1821" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub" aria-label="Visit GitHub profile">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <a href="SS1821 (1).pdf" class="cta-button" download aria-label="Download resume PDF">
+          <i class="fas fa-download" aria-hidden="true"></i> Download Resume
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section section-light">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="about-content">
+        I am a passionate MCA graduate with a strong interest in Web Development and a solid foundation in computer science. 
+        I thrive on solving complex problems and building elegant solutions. As a quick learner and team player, I adapt 
+        seamlessly to new challenges and technologies. My journey includes hands-on projects, published research, and valuable 
+        internship experiences that have shaped my technical expertise and professional growth.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-toggle">
+        <button class="btn btn-primary toggle-btn" data-bs-toggle="collapse" data-bs-target="#technicalSkills" aria-expanded="true" aria-controls="technicalSkills">
+          <i class="fas fa-code"></i> Technical Skills
+        </button>
+        <button class="btn btn-outline-success toggle-btn" data-bs-toggle="collapse" data-bs-target="#softSkills" aria-expanded="false" aria-controls="softSkills">
+          <i class="fas fa-users"></i> Soft Skills
+        </button>
+      </div>
+      <div class="skills-wrapper">
+        <div class="skill-card collapse show" id="technicalSkills">
+          <h4><i class="fas fa-laptop-code" aria-hidden="true"></i> Technical Skills</h4>
+          <div class="tech-skills-grid">
+            <div class="skill-icon-item">
+              <i class="fab fa-html5 text-danger" aria-hidden="true"></i>
+              <span>HTML5</span>
+            </div>
+            <div class="skill-icon-item">
+              <i class="fab fa-css3-alt text-primary" aria-hidden="true"></i>
+              <span>CSS3</span>
+            </div>
+            <div class="skill-icon-item">
+              <i class="fab fa-js text-warning" aria-hidden="true"></i>
+              <span>JavaScript</span>
+            </div>
+            <div class="skill-icon-item">
+              <i class="fab fa-figma text-danger" aria-hidden="true"></i>
+              <span>Figma</span>
+            </div>
+            <div class="skill-icon-item">
+              <i class="fab fa-bootstrap text-primary" aria-hidden="true"></i>
+              <span>Bootstrap</span>
+            </div>
+            <div class="skill-icon-item">
+              <i class="fab fa-node-js text-success" aria-hidden="true"></i>
+              <span>Node.js</span>
+            </div>
+          </div>
+        </div>
+        <div class="skill-card collapse" id="softSkills">
+          <h4><i class="fas fa-lightbulb" aria-hidden="true"></i> Soft Skills</h4>
+          <div class="soft-skills-grid">
+            <div class="soft-skill-tag">
+              <i class="fas fa-comments" aria-hidden="true"></i>
+              <span>Communication</span>
+            </div>
+            <div class="soft-skill-tag">
+              <i class="fas fa-users" aria-hidden="true"></i>
+              <span>Teamwork</span>
+            </div>
+            <div class="soft-skill-tag">
+              <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
+              <span>Problem-Solving</span>
+            </div>
+            <div class="soft-skill-tag">
+              <i class="fas fa-clock" aria-hidden="true"></i>
+              <span>Time Management</span>
+            </div>
+            <div class="soft-skill-tag">
+              <i class="fas fa-brain" aria-hidden="true"></i>
+              <span>Critical Thinking</span>
+            </div>
+            <div class="soft-skill-tag">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <span>Leadership</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section section-light">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h5>Client Feedback System</h5>
+          <span class="project-tag">Web Development</span>
+          <p class="mt-3" style="color: var(--text-light);">
+            A comprehensive feedback management system designed to streamline client communications and improve service quality.
+          </p>
+          <a href="Screenshot_20250911_225055 (1).jpg" class="download-link" download aria-label="Download Client Feedback System project">
+            <i class="fas fa-download" aria-hidden="true"></i> Download Project
+          </a>
+        </div>
+        <div class="project-card">
+          <h5>Credit Card Fraud Detection</h5>
+          <span class="project-tag">Machine Learning</span>
+          <p class="mt-3" style="color: var(--text-light);">
+            Advanced ML model using XGBoost and SHAP for detecting fraudulent transactions with high accuracy and explainability.
+          </p>
+          <a href="WhatsApp Image 2025-09-16 at 21.05.14_f310f683.jpg" class="download-link" download aria-label="Download Credit Card Fraud Detection project">
+            <i class="fas fa-download" aria-hidden="true"></i> Download Project
+          </a>
+        </div>
+        <div class="project-card">
+          <h5>Full Stack Application</h5>
+          <span class="project-tag">Full Stack</span>
+          <p class="mt-3" style="color: var(--text-light);">
+            Complete end-to-end web application showcasing modern development practices and responsive design principles.
+          </p>
+          <a href="IMG_20250915_223459.jpg" class="download-link" download aria-label="Download Full Stack project">
+            <i class="fas fa-download" aria-hidden="true"></i> Download Project
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications" class="section">
+    <div class="container">
+      <h2 class="section-title">Publications</h2>
+      <div class="info-card">
+        <h5><i class="fas fa-book" aria-hidden="true"></i> Smart and Explainable Credit Card Fraud Detection Using XGBoost and SHAP</h5>
+        <p class="mt-3">
+          <strong>Journal:</strong> Journal of IoT in Social, Mobile, Analytics, and Cloud (ISMAC)<br>
+          <strong>Volume:</strong> 7, Issue 2, June 2025<br>
+          <strong>DOI:</strong> 10.36548/jismac.2025.2.004<br><br>
+          This research paper explores advanced machine learning techniques for fraud detection, emphasizing model explainability and practical implementation.
+        </p>
+        <a href="IMG_20250916_183457.jpg" class="download-link" download aria-label="Download publication certificate">
+          <i class="fas fa-file-pdf" aria-hidden="true"></i> Download Certificate
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="internship" class="section section-light">
+    <div class="container">
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="info-card h-100">
+            <h5><i class="fas fa-briefcase" aria-hidden="true"></i> Web Development Intern</h5>
+            <p class="mt-3">
+              <strong>Company:</strong> AristosTech India Pvt Ltd<br>
+              <strong>Location:</strong> Chennai, India<br>
+              <strong>Duration:</strong> August 2024<br>
+              <strong>Project:</strong> Client Feedback System<br><br>
+              Developed a robust feedback management system, collaborating with cross-functional teams to deliver a scalable solution.
+            </p>
+            <a href="IMG-20240901-WA0020.jpg" class="download-link" download aria-label="Download web development internship certificate">
+              <i class="fas fa-certificate" aria-hidden="true"></i> View Certificate
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="info-card h-100">
+            <h5><i class="fas fa-chart-line" aria-hidden="true"></i> Data Analyst Intern</h5>
+            <p class="mt-3">
+              <strong>Company:</strong> Bluez Infomatic Solutions<br>
+              <strong>Location:</strong> Coimbatore, India<br>
+              <strong>Duration:</strong> February - May 2025<br>
+              <strong>Project:</strong> Credit Card Fraud Detection Analysis<br><br>
+              Conducted comprehensive data analysis and implemented ML models for fraud detection with measurable impact.
+            </p>
+            <a href="IMG-20240808-WA0003.jpg" class="download-link" download aria-label="Download data analyst internship certificate">
+              <i class="fas fa-certificate" aria-hidden="true"></i> View Certificate
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" class="section">
+    <div class="container">
+      <h2 class="section-title">Certifications & Achievements</h2>
+      <div class="cert-grid">
+        <div class="cert-item">
+          <i class="fas fa-award" style="font-size: 48px; color: #f59e0b;" aria-hidden="true"></i>
+          <h5>Full Stack Development</h5>
+          <a href="IMG_20250915_223459.jpg" class="cert-download" download aria-label="Download Full Stack Development certificate">
+            <i class="fas fa-download" aria-hidden="true"></i> Download
+          </a>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-robot" style="font-size: 48px; color: #6366f1;" aria-hidden="true"></i>
+          <h5>Artificial Intelligence Bootcamp</h5>
+          <a href="Screenshot_20250912_215407 (1).jpg" class="cert-download" download aria-label="Download AI Bootcamp certificate">
+            <i class="fas fa-download" aria-hidden="true"></i> Download
+          </a>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-network-wired" style="font-size: 48px; color: #10b981;" aria-hidden="true"></i>
+          <h5>NPTEL IoT Certification</h5>
+          <a href="IMG_20250914_215843.jpg" class="cert-download" download aria-label="Download NPTEL IoT certificate">
+            <i class="fas fa-download" aria-hidden="true"></i> Download
+          </a>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-code" style="font-size: 48px; color: #ec4899;" aria-hidden="true"></i>
+          <h5>Full Stack Development Bootcamp</h5>
+          <a href="Screenshot_20250913_211213 (1).jpg" class="cert-download" download aria-label="Download Full Stack Bootcamp certificate">
+            <i class="fas fa-download" aria-hidden="true"></i> Download
+          </a>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-graduation-cap" style="font-size: 48px; color: #0ea5e9;" aria-hidden="true"></i>
+          <h5>Barclays LifeSkills Programme</h5>
+          <a href="IMG_20250916_205117.jpg" class="cert-download" download aria-label="Download Barclays LifeSkills certificate">
+            <i class="fas fa-download" aria-hidden="true"></i> Download
+          </a>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-users" style="font-size: 48px; color: #8b5cf6;" aria-hidden="true"></i>
+          <h5>Tech Link & Brain Byte Participation</h5>
+          <a href="IMG_20250916_200150.jpg" class="cert-download" download aria-label="Download Tech Link participation certificate">
+            <i class="fas fa-download" aria-hidden="true"></i> Download
+          </a>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-file-alt" style="font-size: 48px; color: #f59e0b;" aria-hidden="true"></i>
+          <h5>Paper Presentation Certificate</h5>
+          <a href="IMG_20250916_200232.jpg" class="cert-download" download aria-label="Download paper presentation certificate">
+            <i class="fas fa-download" aria-hidden="true"></i> Download
+          </a>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-trophy" style="font-size: 48px; color: #eab308;" aria-hidden="true"></i>
+          <h5>Symposium First Prize</h5>
+          <a href="IMG_20250916_200122.jpg" class="cert-download" download aria-label="Download symposium first prize certificate">
+            <i class="fas fa-download" aria-hidden="true"></i> Download
+          </a>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-microphone" style="font-size: 48px; color: #6366f1;" aria-hidden="true"></i>
+          <h5>Conference Paper Presentation</h5>
+          <a href="IMG_20250916_195517.jpg" class="cert-download" download aria-label="Download conference presentation certificate">
+            <i class="fas fa-download" aria-hidden="true"></i> Download
+          </a>
+        </div>
+        <div class="cert-item">
+          <i class="fas fa-car" style="font-size: 48px; color: #ef4444;" aria-hidden="true"></i>
+          <h5>RC Racing First Prize</h5>
+          <a href="IMG_20250916_200308.jpg" class="cert-download" download aria-label="Download RC Racing prize certificate">
+            <i class="fas fa-download" aria-hidden="true"></i> Download
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section text-center">
+    <div class="container">
+      <h2>Let's Work Together</h2>
+      <p style="font-size: 18px; margin-bottom: 40px; opacity: 0.9;">
+        Have a project in mind? Let's create something amazing together!
+      </p>
+      <form class="contact-form" action="mailto:selvamsssankar@gmail.com" method="post" enctype="text/plain">
+        <input type="text" class="form-control mb-3" name="Name" placeholder="Your Name" required aria-label="Your name">
+        <input type="email" class="form-control mb-3" name="Email" placeholder="Your Email" required aria-label="Your email address">
+        <textarea class="form-control mb-4" name="Message" rows="5" placeholder="Your Message" required aria-label="Your message"></textarea>
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p style="margin-bottom: 20px;">&copy; <span id="currentYear"></span> Selvam S. All Rights Reserved.</p>
+    <div>
+      <a href="https://www.linkedin.com/in/selvam-ss1821" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="Visit LinkedIn profile">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      <a href="mailto:selvamsssankar@gmail.com" title="Email" aria-label="Send email">
+        <i class="fas fa-envelope" aria-hidden="true"></i>
+      </a>
+      <a href="tel:+916382498900" title="Phone" aria-label="Call phone number">
+        <i class="fas fa-phone" aria-hidden="true"></i>
+      </a>
+      <a href="https://github.com/Selvam1821" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="Visit GitHub profile">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const target = document.querySelector(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          const navCollapse = document.querySelector('.navbar-collapse');
+          if (navCollapse && navCollapse.classList.contains('show')) {
+            new bootstrap.Collapse(navCollapse, { toggle: true });
+          }
+        }
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Typing Effect
+    const roles = ["MCA Graduate", "Full Stack Developer", "Web Developer", "Problem Solver"];
+    let roleIndex = 0;
+    let charIndex = 0;
+    const typingSpeed = 80;
+    const eraseSpeed = 40;
+    const delay = 2000;
+    const typingElement = document.getElementById("typing-text");
+
+    function typeText() {
+      const currentRole = roles[roleIndex];
+      if (charIndex < currentRole.length) {
+        typingElement.innerHTML = currentRole.substring(0, charIndex + 1) + '<span class="typing-cursor"></span>';
+        charIndex++;
+        setTimeout(typeText, typingSpeed);
+      } else {
+        setTimeout(eraseText, delay);
+      }
+    }
+
+    function eraseText() {
+      const currentRole = roles[roleIndex];
+      if (charIndex > 0) {
+        typingElement.innerHTML = currentRole.substring(0, charIndex - 1) + '<span class="typing-cursor"></span>';
+        charIndex--;
+        setTimeout(eraseText, eraseSpeed);
+      } else {
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeText, 500);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(typeText, 1000);
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.project-card, .info-card, .cert-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
